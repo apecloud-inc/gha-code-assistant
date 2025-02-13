@@ -1,0 +1,6 @@
+name: 'AI Code Assistant'
+description: 'This GitHub Action assists in writing and improving code using AI models.'
+author: 'ApeCloud Inc.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
