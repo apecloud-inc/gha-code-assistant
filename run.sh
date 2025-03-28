@@ -2,6 +2,8 @@
 
 set -e
 
+git config --global --add safe.directory /github/workspace
+
 REPO_NAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 
 onerror() {
