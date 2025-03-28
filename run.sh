@@ -5,7 +5,7 @@ set -e
 REPO_NAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 
 onerror() {
-	local message="🤖 says: ‼️ AI code assistant action failed."
+	local message="🤖 says: ‼️ Code assistant action failed."
 	if [[ -n "$PR_NUMBER" ]]; then
 		gh pr comment "$PR_NUMBER" --body "$message<br/>See: https://github.com/$REPO_NAME/actions/runs/$GITHUB_RUN_ID"
 	else
@@ -15,7 +15,7 @@ onerror() {
 }
 
 onsuccess() {
-	local message="🤖 says: AI code assistant action finished successfully 🎉!"
+	local message="🤖 says: Code assistant action finished successfully 🎉!"
 	if [[ -n "$response" ]]; then
 		rsp_message=$(echo "$RESPONSE" | jq -r '.message')
 		message="$message<br/><br/>$rsp_message"
@@ -53,9 +53,7 @@ if [[ -z "$PR_URL" && -z "$ISSUE_URL" ]]; then
 	exit 1
 fi
 
-AI_CODE_ASSISTANT_API_URL="https://example.com/api"
-
-RESPONSE=$(curl -s -X POST "$AI_CODE_ASSISTANT_API_URL" \
+RESPONSE=$(curl -s -X POST "$CODE_ASSISTANT_API_URL" \
   -H "Content-Type: application/json" \
   -d @- << EOF
 {
@@ -67,6 +65,6 @@ EOF
 )
 
 if [[ $? -ne 0 ]]; then
-  echo "Error calling AI code assistant API."
+  echo "Error calling the code assistant API."
   exit 1
 fi

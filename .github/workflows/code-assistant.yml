@@ -5,6 +5,7 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  CODE_ASSISTANT_API_URL: ${{ secrets.CODE_ASSISTANT_API_URL }}
 
 jobs:
   code-assistant:
@@ -16,7 +17,8 @@ jobs:
         with:
           token: ${{ env.GH_TOKEN }}
           fetch-depth: 0
-      - name: AI Code Assistant
+      - name: Code Assistant
         uses: apecloud-inc/gha-code-assistant@main
         env:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
+          CODE_ASSISTANT_API_URL: ${{ env.CODE_ASSISTANT_API_URL }}
