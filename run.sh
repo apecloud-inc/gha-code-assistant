@@ -18,7 +18,7 @@ onerror() {
 
 onsuccess() {
 	local message="🤖 says: Code assistant action finished successfully 🎉!"
-	if [[ -n "$response" ]]; then
+	if [[ -n "$RESPONSE" ]]; then
 		rsp_message=$(echo "$RESPONSE" | jq -r '.message')
 		message="$message<br/><br/>$rsp_message"
 	fi
