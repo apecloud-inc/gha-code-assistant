@@ -27,6 +27,7 @@ jobs:
       LLM_MODEL: ${{ vars.LLM_MODEL || 'anthropic/claude-3-5-sonnet-20241022' }}
       target_branch: ${{ vars.TARGET_BRANCH || 'main' }}
     secrets:
-      PAT_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      PAT_USERNAME: ${{ secrets.PAT_USERNAME }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
